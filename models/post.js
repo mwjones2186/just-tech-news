@@ -15,8 +15,8 @@ Post.init(
         title: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
+            // primaryKey: true,
+            // autoIncrement: true
         },
         post_url: {
             type: DataTypes.STRING,
