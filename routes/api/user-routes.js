@@ -30,6 +30,18 @@ router.get('/:id', (req, res)=>{
             ]
             },
             {
+                model: Comment,
+                attributes: [
+                    'id', 
+                    'comment_text', 
+                    'created_at'
+                ],
+                include: {
+                  model: Post,
+                  attributes: ['title']
+                }
+              },
+            {
               model: Post,
               attributes: ['title'],
               through: Vote,
@@ -77,7 +89,7 @@ router.post('/login', (req, res)=>{
         res.json({user:dbUserData});
         
         const validPassword = dbUserData.checkPassword(req.body.password);
-        
+
         if (!validPassword) {
             res.status(400).json({message: 'Incorrect Password!'});
             return;
